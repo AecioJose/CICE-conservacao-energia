@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CICE Eletroeletronica Noite</title>
+    <link rel="shortcut icon" href="luminaria.ico" type="image/x-icon">
+
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            light: '#e0f2fe',
+                            DEFAULT: '#0284c7',
+                            dark: '#0369a1',
+                        },
+                        eco: {
+                            light: '#dcfce7',
+                            DEFAULT: '#16a34a',
+                            dark: '#15803d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        input[type="radio"]:checked + label {
+            border-color: #0284c7;
+            background-color: #f0f9ff;
+        }
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .shake-element {
+            animation: shake 0.4s ease-in-out;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-8px); }
+            50% { transform: translateX(8px); }
+            75% { transform: translateX(-8px); }
+        }
+        /* Previne scroll horizontal globalmente */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50 antialiased selection:bg-brand selection:text-white overflow-x-hidden">
+
+    <!-- Navegação -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-md shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-2 flex-shrink-0">
+                    <i data-lucide="leaf" class="text-eco h-6 w-6 animate-float flex-shrink-0"></i>
+                    <span class="font-bold text-lg sm:text-xl text-gray-900 tracking-tight whitespace-nowrap">Energia Consciente</span>
+                </div>
+                <div class="md:hidden flex-shrink-0">
+                    <button id="mobile-menu-btn" class="text-gray-600 p-2 focus:outline-none">
+                        <i data-lucide="menu" class="h-6 w-6"></i>
+                    </button>
+                </div>
+                <div class="hidden md:flex space-x-6 items-center">
+                    <a href="#introducao" class="text-sm font-medium text-gray-600 hover:text-brand transition-colors">Introdução</a>
+                    <a href="#boas-praticas" class="text-sm font-medium text-gray-600 hover:text-brand transition-colors">Boas Práticas</a>
+                    <a href="#em-casa" class="text-sm font-medium text-gray-600 hover:text-brand transition-colors">Em Casa</a>
+                    <a href="#dimensionamento" class="text-sm font-medium text-gray-600 hover:text-brand transition-colors">Dimensionamento</a>
+                    <a href="#quiz" class="text-sm font-medium text-white bg-brand hover:bg-brand-dark px-4 py-2 rounded-full transition-transform hover:scale-105 shadow-sm">Fazer Quiz</a>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-lg absolute w-full left-0">
+            <div class="px-4 pt-2 pb-4 space-y-1">
+                <a href="#introducao" class="block px-3 py-2 text-gray-700 hover:text-brand hover:bg-gray-50 rounded-md">Introdução</a>
+                <a href="#boas-praticas" class="block px-3 py-2 text-gray-700 hover:text-brand hover:bg-gray-50 rounded-md">Boas Práticas</a>
+                <a href="#em-casa" class="block px-3 py-2 text-gray-700 hover:text-brand hover:bg-gray-50 rounded-md">Dicas em Casa</a>
+                <a href="#dimensionamento" class="block px-3 py-2 text-gray-700 hover:text-brand hover:bg-gray-50 rounded-md">Dimensionamento</a>
+                <a href="#quiz" class="block px-3 py-2 text-brand font-bold bg-brand-light/30 rounded-md mt-2">Quiz</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="relative pt-32 pb-20 overflow-hidden w-full">
+        <div class="absolute inset-0 bg-gradient-to-br from-brand-light to-eco-light opacity-70"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 text-center" data-aos="zoom-in">
+            <span class="inline-block py-1 px-3 rounded-full bg-white text-brand text-sm font-semibold tracking-wide shadow-sm mb-6 max-w-full truncate">Campanha de Conscientização</span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">
+                Pequenas Atitudes,<br class="hidden md:block"> <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand to-eco">Grandes Impactos</span>
+            </h1>
+            <p class="max-w-2xl mx-auto text-lg text-gray-700 mb-10">
+                O uso eficiente do ar&#8209;condicionado e a conservação de energia garantem um futuro sustentável para todos.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#introducao" class="px-6 py-3 rounded-full text-white bg-brand hover:bg-brand-dark shadow-md transition-all hover:-translate-y-1 text-center font-medium">Ler Cartilha</a>
+                <a href="#quiz" class="px-6 py-3 rounded-full text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 shadow-sm transition-all hover:-translate-y-1 text-center font-medium">Testar Conhecimentos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introdução -->
+    <section id="introducao" class="py-16 bg-white overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4" data-aos="fade-up">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Introdução</h2>
+                <div class="w-16 h-1 bg-brand mx-auto rounded-full"></div>
+            </div>
+            <div class="prose prose-lg text-gray-700 max-w-none text-justify md:text-left space-y-4">
+                <p>O <strong>consumo consciente de energia</strong> significa utilizar os recursos elétricos de maneira racional e eficiente, aproveitando o máximo de seus benefícios sem causar desperdícios. É a prática de repensar hábitos diários para garantir que a energia seja usada apenas quando e quanto for realmente necessária.</p>
+                <p>No contexto atual, isso é de extrema importância por três motivos principais: o <strong>aumento expressivo do consumo energético</strong> global, o forte <strong>impacto ambiental</strong> causado pela necessidade de gerar cada vez mais energia, e o alto <strong>custo financeiro</strong> associado a esse desperdício.</p>
+                <p>Diante desse cenário, a <strong>CICE (Comissão Interna de Conservação de Energia)</strong> atua como uma iniciativa coletiva fundamental. Seu objetivo não é estabelecer regras, mas promover uma mudança de cultura, orientando estudantes e colaboradores para que o uso eficiente da energia seja um hábito natural e compartilhado por todos.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Por que usar o ar&#8209;condicionado de forma consciente? -->
+    <section class="py-16 bg-gray-50 border-t border-gray-100 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12" data-aos="fade-down">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Por que usar o ar&#8209;condicionado de forma consciente?</h2>
+                <div class="w-16 h-1 bg-brand mx-auto rounded-full"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Impacto ambiental -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-12 h-12 bg-eco-light rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="globe-2" class="w-6 h-6 text-eco"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Impacto ambiental</h3>
+                    <p class="text-gray-600 text-sm mb-3">Existe uma forte relação entre o consumo de energia elétrica e a emissão de carbono. Como a maior demanda energética exige mais geração, muitas vezes o sistema precisa recorrer a fontes não renováveis (como usinas termelétricas movidas a combustíveis fósseis).</p>
+                    <p class="text-gray-600 text-sm font-medium">Consequências diretas: <span class="font-normal">Aquecimento global, severas mudanças climáticas e a escassez de recursos naturais.</span></p>
+                </div>
+                <!-- Sustentabilidade -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-12 h-12 bg-brand-light rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="leaf" class="w-6 h-6 text-brand"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Sustentabilidade</h3>
+                    <p class="text-gray-600 text-sm">O conceito de sustentabilidade aplicado ao uso de energia significa garantir as necessidades do presente sem comprometer a capacidade das gerações futuras de suprir suas próprias necessidades.</p>
+                    <p class="text-gray-600 text-sm mt-2">É de extrema importância equilibrar o conforto térmico necessário para o estudo e trabalho com a nossa responsabilidade ambiental.</p>
+                </div>
+                <!-- Impacto econômico -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="coins" class="w-6 h-6 text-orange-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Impacto econômico</h3>
+                    <p class="text-gray-600 text-sm">A matemática é simples: energia desperdiçada é igual a custo desnecessário. Esse dinheiro jogado fora poderia estar sendo investido em melhorias estruturais.</p>
+                    <p class="text-gray-600 text-sm mt-2">Em ambientes institucionais e coletivos, o desperdício afeta todos, pois os recursos que pagam essa conta extra saem do orçamento que beneficia toda a comunidade escolar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Boas Práticas e Cultura -->
+    <section id="boas-praticas" class="py-16 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12" data-aos="fade-down">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Boas Práticas no Uso do ar&#8209;condicionado</h2>
+                <div class="w-16 h-1 bg-brand mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+                <!-- 1 -->
+                <div class="p-6 bg-gray-50 border border-gray-200 rounded-xl flex gap-4" data-aos="fade-right">
+                    <div class="mt-1 flex-shrink-0"><i data-lucide="door-closed" class="w-8 h-8 text-brand"></i></div>
+                    <div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">Manter portas e janelas fechadas</h4>
+                        <p class="text-sm text-gray-600">O ar&#8209;condicionado funciona resfriando um volume de ar fechado. Quando há troca constante de ar com o ambiente externo (através de portas ou janelas abertas), o equipamento trabalha muito mais para tentar dar conta da demanda.</p>
+                        <p class="text-sm text-red-600 font-medium mt-2">Consequência: Maior consumo de energia somado a uma menor eficiência (o ambiente não gela).</p>
+                    </div>
+                </div>
+                <!-- 2 -->
+                <div class="p-6 bg-gray-50 border border-gray-200 rounded-xl flex gap-4" data-aos="fade-left">
+                    <div class="mt-1 flex-shrink-0"><i data-lucide="power" class="w-8 h-8 text-red-500"></i></div>
+                    <div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">Desligar ao sair do ambiente</h4>
+                        <p class="text-sm text-gray-600">Esta atitude simples evita o consumo desnecessário de energia quando o ambiente está vazio.</p>
+                        <p class="text-sm text-gray-600 mt-2">Lembre-se: Mesmo poucos minutos de ar ligado em uma sala vazia, quando acumulados diariamente ao longo de meses, geram um desperdício significativo de energia e recursos financeiros.</p>
+                    </div>
+                </div>
+                <!-- 3 -->
+                <div class="p-6 bg-gray-50 border border-gray-200 rounded-xl flex gap-4" data-aos="fade-right">
+                    <div class="mt-1 flex-shrink-0"><i data-lucide="thermometer-snowflake" class="w-8 h-8 text-blue-500"></i></div>
+                    <div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">Ajuste de temperatura ideal</h4>
+                        <p class="text-sm text-gray-600">A recomendação técnica e dos órgãos de saúde é manter a temperatura sempre entre <strong>23°C e 25°C</strong>.</p>
+                        <p class="text-sm text-gray-600 mt-2">Temperaturas muito baixas (como 17°C) não fazem o local gelar mais rápido; elas apenas forçam o compressor a não desligar nunca, aumentando drasticamente o consumo de eletricidade.</p>
+                    </div>
+                </div>
+                <!-- 4 -->
+                <div class="p-6 bg-gray-50 border border-gray-200 rounded-xl flex gap-4" data-aos="fade-left">
+                    <div class="mt-1 flex-shrink-0"><i data-lucide="wrench" class="w-8 h-8 text-gray-600"></i></div>
+                    <div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">Manutenção e limpeza</h4>
+                        <p class="text-sm text-gray-600">A manutenção preventiva é crucial. Filtros de ar sujos bloqueiam a saída do ar, reduzindo severamente a eficiência térmica do equipamento.</p>
+                        <p class="text-sm text-gray-600 mt-2">Isso não apenas aumenta o consumo de energia (pois o ar trabalha "forçado"), como também prejudica gravemente a qualidade do ar respirado no ambiente.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transformando isso em cultura -->
+            <div class="bg-gradient-to-r from-brand-dark to-brand rounded-3xl p-8 md:p-12 text-white shadow-xl relative overflow-hidden" data-aos="zoom-in">
+                <!-- Decorative BG elements -->
+                <div class="absolute -top-20 -right-20 w-64 h-64 bg-white opacity-10 rounded-full mix-blend-overlay filter blur-xl"></div>
+                <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-white opacity-10 rounded-full mix-blend-overlay filter blur-xl"></div>
+                
+                <div class="relative z-10 flex flex-col md:flex-row items-center gap-8">
+                    <div class="flex-1">
+                        <h2 class="text-2xl md:text-3xl font-bold mb-4">Transformando isso em Cultura</h2>
+                        <p class="text-brand-light text-base md:text-lg mb-4">
+                            A cultura institucional é formada por hábitos repetidos diariamente. Entender que as pequenas ações individuais geram um impacto coletivo gigantesco é o primeiro passo.
+                        </p>
+                        <p class="text-sm text-white/90 mb-4">
+                            Queremos incentivar a <strong>responsabilidade compartilhada</strong>: se você for o último a sair, apague a luz e desligue o ar. Se a porta estiver aberta, feche. Não espere que outra pessoa faça.
+                        </p>
+                        <p class="text-sm text-white/90">
+                            O papel da <strong>CICE</strong> não é ser uma "polícia de energia", mas atuar ativamente na conscientização, educação e no monitoramento de resultados, ajudando a construir um ambiente melhor para todos.
+                        </p>
+                    </div>
+                    <div class="w-full md:w-1/3 flex justify-center">
+                        <i data-lucide="users" class="w-32 h-32 text-white/30 animate-pulse"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Como dimensionar corretamente -->
+    <section id="dimensionamento" class="py-16 bg-white border-t border-gray-100 overflow-hidden">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Como dimensionar um ar&#8209;condicionado corretamente</h2>
+                <div class="w-16 h-1 bg-brand mx-auto rounded-full mb-4"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Para garantir o conforto sem gastar energia à toa, é essencial instalar a capacidade correta no seu ambiente.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <!-- Fatores -->
+                <div class="space-y-8">
+                    <div data-aos="fade-up" data-aos-delay="100">
+                        <h4 class="text-lg font-bold text-gray-900 border-b pb-2 mb-3">O que são BTUs?</h4>
+                        <p class="text-sm text-gray-600">O BTU (<em>British Thermal Unit</em>) é a unidade de medida utilizada para definir a <strong>capacidade de refrigeração</strong> que um aparelho possui.</p>
+                    </div>
+                    
+                    <div data-aos="fade-up" data-aos-delay="200">
+                        <h4 class="text-lg font-bold text-gray-900 border-b pb-2 mb-3">Fatores que influenciam</h4>
+                        <p class="text-sm text-gray-600 mb-2">A capacidade exata não depende apenas da metragem. Você deve considerar:</p>
+                        <ul class="list-disc pl-5 text-sm text-gray-600 space-y-1">
+                            <li>O tamanho do ambiente (em m²).</li>
+                            <li>A quantidade de pessoas frequentes no local.</li>
+                            <li>A incidência de sol (se bate sol no cômodo).</li>
+                            <li>A quantidade de equipamentos eletrônicos ligados (computadores, televisões, etc).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Regra de cálculo -->
+                <div class="bg-brand-light/20 p-6 rounded-2xl border border-brand-light" data-aos="fade-up" data-aos-delay="300">
+                    <h4 class="text-lg font-bold text-brand-dark mb-4 flex items-center gap-2"><i data-lucide="calculator" class="w-5 h-5"></i> Regra básica de cálculo</h4>
+                    <ul class="space-y-3 text-sm text-gray-700 font-medium">
+                        <li class="flex items-center gap-2 bg-white p-2 rounded shadow-sm">
+                            <i data-lucide="ruler" class="w-4 h-4 text-brand"></i> <strong>600 BTUs</strong> por cada m² do ambiente.
+                        </li>
+                        <li class="flex items-center gap-2 bg-white p-2 rounded shadow-sm">
+                            <i data-lucide="users" class="w-4 h-4 text-brand"></i> <strong>+ 600 BTUs</strong> por cada pessoa adicional (a primeira já está na conta do m²).
+                        </li>
+                        <li class="flex items-center gap-2 bg-white p-2 rounded shadow-sm">
+                            <i data-lucide="monitor" class="w-4 h-4 text-brand"></i> <strong>+ 600 BTUs</strong> por cada equipamento eletrônico relevante ligado no ambiente.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <!-- Exemplo prático -->
+                <div class="bg-gray-800 text-white p-6 rounded-2xl" data-aos="fade-right">
+                    <h4 class="font-bold text-lg mb-3 text-brand-light">Exemplo prático</h4>
+                    <p class="text-sm text-gray-300 mb-3">Imagine um quarto de <strong>12m²</strong>, onde dormem <strong>2 pessoas</strong>, com <strong>1 TV ligada</strong>.</p>
+                    <div class="bg-gray-900 p-4 rounded-lg font-mono text-sm space-y-1">
+                        <p>• 12m² × 600 = 7.200</p>
+                        <p>• 1 pessoa extra × 600 = 600</p>
+                        <p>• 1 TV × 600 = 600</p>
+                        <div class="h-px bg-gray-700 my-2"></div>
+                        <p class="font-bold text-eco-light">TOTAL = 8.400 BTUs</p>
+                    </div>
+                    <p class="text-xs text-gray-400 mt-2 italic">*Neste caso, o ideal seria comprar um aparelho padrão de mercado de 9.000 BTUs para fixação do cálculo.</p>
+                </div>
+
+                <!-- Reduzir necessidade -->
+                <div class="p-6 rounded-2xl border border-gray-200 shadow-sm" data-aos="fade-left">
+                    <h4 class="font-bold text-gray-900 text-lg mb-3">Como reduzir a necessidade de BTUs</h4>
+                    <p class="text-sm text-gray-600 mb-3">Você pode melhorar a eficiência da sala para não precisar de um aparelho tão forte:</p>
+                    <ul class="list-disc pl-5 text-sm text-gray-600 space-y-2">
+                        <li>Fazer um melhor <strong>isolamento térmico</strong>.</li>
+                        <li>Fazer o uso de <strong>cortinas ou persianas</strong> para barrar a luz.</li>
+                        <li>Realizar a <strong>vedação de portas e janelas</strong>.</li>
+                        <li><strong>Evitar a entrada direta de calor</strong> (sol da tarde) no ambiente.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Ferramenta -->
+            <div class="text-center mt-10" data-aos="fade-up">
+                <a href="https://www.frigelar.com.br/calculadora-de-btus" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-3 bg-white border-2 border-brand text-brand font-bold rounded-full hover:bg-brand hover:text-white transition-all transform hover:-translate-y-1 shadow-md">
+                    <i data-lucide="external-link" class="w-5 h-5"></i> Acessar Calculadora de BTUs Online
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dicas para economizar em casa -->
+    <section id="em-casa" class="py-16 bg-gray-50 border-t border-gray-200 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Dicas para economizar energia em casa</h2>
+                <div class="w-16 h-1 bg-eco mx-auto rounded-full mb-4"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">A eficiência energética começa nos nossos lares. Adote estas práticas valiosas no seu dia a dia.</p>
+            </div>
+
+            <!-- Grid com Mais Dicas de Casa -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                <!-- Dica 1 -->
+                <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:border-eco transition-colors" data-aos="fade-up" data-aos-delay="100">
+                    <h4 class="font-bold text-lg mb-2 text-gray-900 flex items-center gap-2"><i data-lucide="plug" class="w-5 h-5 text-eco"></i> Eletrodomésticos</h4>
+                    <p class="text-sm text-gray-600"><strong>Evite o stand-by:</strong> a luz vermelha acesa consome energia passivamente. Desligue da tomada equipamentos de uso esporádico (como micro-ondas e TVs de quartos vazios).</p>
+                </div>
+                <!-- Dica 2 -->
+                <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:border-eco transition-colors" data-aos="fade-up" data-aos-delay="200">
+                    <h4 class="font-bold text-lg mb-2 text-gray-900 flex items-center gap-2"><i data-lucide="wind" class="w-5 h-5 text-eco"></i> Ventilação natural</h4>
+                    <p class="text-sm text-gray-600">Aproveite ao máximo a brisa natural. Abra as janelas em <strong>horários estratégicos</strong> (início da manhã ou fim de tarde) para refrescar o ambiente sem custo algum.</p>
+                </div>
+                <!-- Dica 3 -->
+                <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:border-eco transition-colors" data-aos="fade-up" data-aos-delay="300">
+                    <h4 class="font-bold text-lg mb-2 text-gray-900 flex items-center gap-2"><i data-lucide="lightbulb" class="w-5 h-5 text-eco"></i> Iluminação eficiente</h4>
+                    <p class="text-sm text-gray-600">Priorize <strong>lâmpadas LED</strong>. Elas consomem até 80% menos energia, não esquentam o ambiente e possuem uma vida útil muito maior do que as fluorescentes.</p>
+                </div>
+                <!-- Dica 4 -->
+                <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:border-eco transition-colors" data-aos="fade-up" data-aos-delay="400">
+                    <h4 class="font-bold text-lg mb-2 text-gray-900 flex items-center gap-2"><i data-lucide="droplets" class="w-5 h-5 text-eco"></i> Chuveiro Elétrico</h4>
+                    <p class="text-sm text-gray-600">É um dos maiores vilões da conta de luz. Mantenha a chave na posição <strong>"Verão"</strong> (economia de até 30%) e reduza o tempo de banho, especialmente no frio.</p>
+                </div>
+                <!-- Dica 5 -->
+                <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:border-eco transition-colors" data-aos="fade-up" data-aos-delay="500">
+                    <h4 class="font-bold text-lg mb-2 text-gray-900 flex items-center gap-2"><i data-lucide="refrigerator" class="w-5 h-5 text-eco"></i> Geladeira</h4>
+                    <p class="text-sm text-gray-600">Verifique a vedação da borracha da porta. <strong>Nunca</strong> forre as prateleiras com panos ou plásticos e jamais coloque roupas ou tênis para secar na grade traseira.</p>
+                </div>
+                <!-- Dica 6 -->
+                <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:border-eco transition-colors" data-aos="fade-up" data-aos-delay="600">
+                    <h4 class="font-bold text-lg mb-2 text-gray-900 flex items-center gap-2"><i data-lucide="shirt" class="w-5 h-5 text-eco"></i> Ferro e Lavadora</h4>
+                    <p class="text-sm text-gray-600">Acumule o máximo de roupas para lavar e passar <strong>de uma única vez</strong>. O aquecimento inicial do ferro elétrico é a fase em que ele mais consome energia.</p>
+                </div>
+                <!-- Dica 7 -->
+                <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:border-eco transition-colors lg:col-span-2" data-aos="fade-up" data-aos-delay="700">
+                    <h4 class="font-bold text-lg mb-2 text-gray-900 flex items-center gap-2"><i data-lucide="sun" class="w-5 h-5 text-eco"></i> Proteção contra o sol</h4>
+                    <p class="text-sm text-gray-600">Feche cortinas e persianas em paredes ou janelas que recebem sol direto à tarde. Isso reduz drasticamente o aquecimento da casa, diminuindo a necessidade de usar ventiladores ou o ar&#8209;condicionado na potência máxima quando você chegar.</p>
+                </div>
+            </div>
+
+            <!-- Escolha de equipamentos eficientes -->
+            <div class="bg-white p-8 md:p-12 rounded-3xl border border-gray-200 shadow-sm overflow-hidden" data-aos="fade-up">
+                <h3 class="text-2xl font-bold text-gray-900 mb-8 border-b pb-4">Escolha de equipamentos eficientes</h3>
+                <p class="text-gray-700 font-medium mb-10">Na hora da compra, é fundamental entender o que cada selo representa para identificar os produtos mais eficientes <strong>(Sempre busque aparelhos Classe A)</strong>. Conheça as principais certificações brasileiras:</p>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+                    <!-- Etiqueta PBE/Inmetro -->
+                    <div class="flex flex-col items-center text-center bg-gray-50 p-6 rounded-2xl border border-gray-100">
+                        <div class="h-56 mb-6 flex items-center justify-center bg-white w-full rounded-xl p-2 border border-gray-200 shadow-sm">
+                            <img src="inmetro2.png" alt="" class="h-full object-contain cursor-zoom-in hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)">
+                        </div>
+                        <h4 class="font-bold text-lg text-brand mb-3">Programa Brasileiro de Etiquetagem (PBE)</h4>
+                        <p class="text-sm text-gray-600">Gerenciado pelo <strong>Inmetro</strong>, utiliza faixas coloridas para classificar os equipamentos. A letra 'A' (faixa verde superior) aponta o equipamento de maior eficiência e menor consumo de energia. Quanto mais próximo da letra 'E' (vermelho), maior o gasto de energia mensal.</p>
+                    </div>
+
+                    <!-- Selo PROCEL -->
+                    <div class="flex flex-col items-center text-center bg-gray-50 p-6 rounded-2xl border border-gray-100">
+                        <div class="h-56 mb-6 flex items-center justify-center bg-white w-full rounded-xl p-2 border border-gray-200 shadow-sm">
+                            <img src="procel.png" alt="" class="h-full object-contain cursor-zoom-in hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)">
+                        </div>
+                        <h4 class="font-bold text-lg text-eco-dark mb-3">Selo PROCEL de Economia</h4>
+                        <p class="text-sm text-gray-600">É um prêmio de eficiência, um selo extra de qualidade. Se um eletrodoméstico tem este selo colado nele, significa que ele foi testado e comprovado como o <strong>melhor e mais econômico</strong> dentro de toda a sua própria categoria (os melhores dentre os Classe A).</p>
+                    </div>
+
+                    <!-- Selo CONPET -->
+                    <div class="flex flex-col items-center text-center bg-gray-50 p-6 rounded-2xl border border-gray-100">
+                        <div class="h-56 mb-6 flex items-center justify-center bg-white w-full rounded-xl p-2 border border-gray-200 shadow-sm">
+                            <img src="conpet.png" alt="" class="h-full object-contain cursor-zoom-in hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)">
+                        </div>
+                        <h4 class="font-bold text-lg text-orange-600 mb-3">Selo CONPET de Eficiência</h4>
+                        <p class="text-sm text-gray-600">Segue exatamente a mesma lógica rigorosa do selo Procel, porém é destinado à avaliação e eficiência de aparelhos movidos a <strong>derivados de petróleo e gás natural</strong>. Procure por este selo ao comprar fogões, fornos a gás e aquecedores de água residenciais.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz -->
+    <section id="quiz" class="py-16 bg-gray-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==')] opacity-30"></div>
+        <div class="max-w-3xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-10" data-aos="zoom-in">
+                <i data-lucide="brain-circuit" class="w-12 h-12 mx-auto text-brand-light mb-4 animate-pulse"></i>
+                <h2 class="text-3xl font-bold mb-2">Quiz de Conscientização</h2>
+                <p class="text-gray-400">Teste o que você aprendeu. Clique na alternativa que julgar correta.</p>
+            </div>
+
+            <div id="quiz-container" class="space-y-6"></div>
+            
+            <div id="quiz-controls" class="mt-12 text-center hidden">
+                <button onclick="renderQuiz()" class="px-8 py-3 bg-brand text-white font-bold rounded-full hover:bg-brand-dark transition-all transform hover:scale-105 shadow-lg flex items-center gap-2 mx-auto">
+                    <i data-lucide="rotate-ccw" class="w-5 h-5"></i> Reiniciar Quiz
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conclusão -->
+    <section class="py-20 bg-white overflow-hidden">
+        <div class="max-w-3xl mx-auto px-4 text-center" data-aos="fade-up">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">Conclusão</h2>
+            <div class="text-lg text-gray-600 mb-8 leading-relaxed space-y-4">
+                <p>
+                    Gostaríamos de reforçar a extrema importância das <strong>pequenas atitudes</strong> no seu dia a dia. Uma porta fechada ou um clique no interruptor parecem insignificantes isoladamente, mas coletivamente mudam o rumo do nosso planeta.
+                </p>
+                <p>
+                    Nunca se esqueça da nossa principal equação: <br>
+                    <strong class="text-brand-dark bg-brand-light/30 px-3 py-1 rounded inline-block mt-2">Economia de Energia = Economia Financeira + Proteção Ambiental</strong>
+                </p>
+                <p>
+                    Incentivamos você, leitor, a aplicar cada um destes conhecimentos não apenas no ambiente acadêmico ou de trabalho, mas dentro da sua própria casa, influenciando sua família e amigos.
+                </p>
+            </div>
+            
+            <!-- Frase final de impacto -->
+            <blockquote class="text-2xl font-bold text-brand italic border-y-2 border-brand-light py-8 my-8 relative">
+                "O futuro sustentável não é construído com grandes sacrifícios esporádicos, mas sim com pequenos hábitos diários que todos nós podemos praticar hoje!"
+            </blockquote>
+            
+        </div>
+    </section>
+
+    <!-- Modal de Imagem (Lightbox) -->
+    <div id="image-modal" class="fixed inset-0 z-[100] hidden bg-black/80 backdrop-blur-sm flex items-center justify-center transition-opacity duration-300 opacity-0 cursor-zoom-out" onclick="closeModal()">
+        <div class="relative max-w-4xl w-full max-h-[90vh] p-4 flex justify-center items-center">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-white bg-black/50 hover:bg-black/80 rounded-full p-2 transition-colors z-10">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <img id="modal-image" src="" alt="Imagem Ampliada" class="max-h-[85vh] max-w-full object-contain transform scale-95 transition-transform duration-300 rounded-xl shadow-2xl bg-white p-4">
+        </div>
+    </div>
+
+    <footer class="bg-gray-100 py-10 border-t border-gray-200 text-gray-600 text-sm overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+                
+                <div class="flex items-center gap-4 flex-col md:flex-row">
+                    <!-- Espaço para Logo Axioma no Rodapé -->
+                    <div class="w-12 h-12 bg-gray-300 rounded-lg flex items-center justify-center font-bold text-gray-500 shadow-inner" title="">
+                        <img src="axioma.jpg" alt="">
+                    </div>
+                    <div>
+                        <p class="font-bold text-gray-800 text-base mb-1">Instituto Axioma</p>
+                        <p>&copy; 2026 Energia Consciente. Todos os direitos reservados.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm max-w-md">
+                    <p class="font-semibold text-gray-800 flex items-center justify-center md:justify-start gap-2 mb-1">
+                        <i data-lucide="info" class="w-4 h-4 text-brand"></i> Sobre o Projeto
+                    </p>
+                    <p class="text-xs">
+                        Esta é uma iniciativa educacional da <strong>CICE (Comissão Interna de Conservação de Energia)</strong>, idealizada e formada exclusivamente pelos alunos do curso de <strong>Eletroeletrônica - Noite</strong>, do Instituto <strong>Axioma</strong> de Ituiutaba. O projeto atua de forma independente, sem contato ou vínculo institucional direto com a administração escolar.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts Externos -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+        const quizData = [
+            {
+                id: 1,
+                question: "O que acontece quando o ar&#8209;condicionado é utilizado com portas e janelas abertas?",
+                options: [
+                    "A) O ar frio se espalha melhor, refrescando todo o prédio de forma eficiente.",
+                    "B) O aparelho trabalha mais para tentar resfriar a troca constante com o ar quente, gerando maior consumo e menor eficiência.",
+                    "C) O consumo de energia diminui, pois o aparelho aproveita a ventilação natural para gelar a sala.",
+                    "D) Não há impacto no consumo de energia ou na vida útil do equipamento."
+                ],
+                correctIndex: 1,
+                feedbackSuccess: "Parabéns! Você acertou. O ar&#8209;condicionado funciona resfriando um volume de ar fechado. A troca constante com o ar externo faz o compressor trabalhar sem parar.",
+                feedbackError: "Não é bem assim. O correto é a alternativa B. Quando há troca constante de ar com o ambiente externo, o equipamento trabalha mais para compensar, resultando em maior consumo de energia e menor eficiência."
+            },
+            {
+                id: 2,
+                question: "Ao sair de uma sala/ambiente por um curto período (ex: 15 minutos), qual deve ser a sua atitude em relação ao ar&#8209;condicionado?",
+                options: [
+                    "A) Desligar o ar&#8209;condicionado para evitar consumo desnecessário.",
+                    "B) Deixar ligado, pois desligar e ligar de novo consome muito mais energia do que mantê-lo rodando.",
+                    "C) Aumentar a temperatura para o máximo e deixá-lo ligado.",
+                    "D) Abrir as janelas e deixar o ar ligado para renovar o oxigênio enquanto está fora."
+                ],
+                correctIndex: 0,
+                feedbackSuccess: "Parabéns! Você acertou. Mesmo poucos minutos acumulados por vários aparelhos em uma instituição geram um desperdício financeiro e energético significativo ao longo do tempo.",
+                feedbackError: "Não é bem assim. O correto é a alternativa A. Existe o mito de que religar consome muito, mas mesmo curtos períodos acumulados geram um desperdício significativo ao longo do tempo. O ideal é desligar ao sair."
+            },
+            {
+                id: 3,
+                question: "Qual é o ajuste de temperatura ideal recomendado para os aparelhos de ar&#8209;condicionado visando eficiência e conforto?",
+                options: [
+                    "A) Entre 16°C e 18°C",
+                    "B) Entre 19°C e 22°C",
+                    "C) Entre 23°C e 25°C",
+                    "D) Sempre no modo mais forte (Turbo) para desumidificar rapidamente."
+                ],
+                correctIndex: 2,
+                feedbackSuccess: "Parabéns! Você acertou. Essa faixa é a ideal recomendada para garantir conforto térmico, além de evitar que o aparelho trabalhe excessivamente.",
+                feedbackError: "Não é bem assim. O correto é a alternativa C (Entre 23°C e 25°C). Temperaturas muito baixas (como o 16°C) aumentam drasticamente o consumo de energia pois o compressor raramente descansa."
+            },
+            {
+                id: 4,
+                question: "Qual é a principal consequência e impacto ambiental causado pelo alto consumo e desperdício de energia elétrica?",
+                options: [
+                    "A) O consumo alto limpa os reservatórios das hidrelétricas, ajudando os rios.",
+                    "B) Não há impacto ambiental, pois toda a energia produzida no Brasil é limpa e sem consequências.",
+                    "C) Maior demanda exige mais geração, frequentemente acionando fontes não renováveis, causando aquecimento global e escassez de recursos.",
+                    "D) Aumenta apenas a conta de luz, impactando estritamente a economia do país e não o meio ambiente."
+                ],
+                correctIndex: 2,
+                feedbackSuccess: "Parabéns! Você acertou. Lembre-se: energia desperdiçada na tomada muitas vezes significa uma termelétrica queimando combustível e emitindo carbono na atmosfera.",
+                feedbackError: "Não é bem assim. O correto é a alternativa C. Relação direta: quanto maior a demanda energética, mais as concessionárias precisam acionar fontes de geração não renováveis e poluentes, afetando o clima."
+            },
+            {
+                id: 5,
+                question: "Ao adquirir um novo eletrodoméstico, como identificar que ele é altamente eficiente no consumo de energia?",
+                options: [
+                    "A) Escolher os produtos classificados na Classe E do Programa Brasileiro de Etiquetagem (PBE).",
+                    "B) Procurar por produtos com o Selo Procel ou CONPET e classificação Classe A no selo do Inmetro.",
+                    "C) Comprar aparelhos com a etiqueta vermelha, que significa maior potência de refrigeração.",
+                    "D) Qualquer aparelho importado possui automaticamente selos de alta eficiência."
+                ],
+                correctIndex: 1,
+                feedbackSuccess: "Parabéns! Você acertou. A Letra A (verde) no Inmetro aliada ao Selo Procel (ou CONPET para gás) garantem que você está levando a opção mais econômica da categoria.",
+                feedbackError: "Não é bem assim. O correto é a alternativa B. Para eficiência máxima e economia, você deve buscar a certificação Classe A (no selo de etiquetagem PBE) e dar preferência aos que contam com o Selo Procel."
+            }
+        ];
+
+        let questionsAnswered = 0;
+
+        function renderQuiz() {
+            const container = document.getElementById('quiz-container');
+            const controls = document.getElementById('quiz-controls');
+            container.innerHTML = '';
+            controls.classList.add('hidden');
+            questionsAnswered = 0;
+
+            quizData.forEach((q, idx) => {
+                const html = `
+                    <div class="bg-gray-800 p-6 rounded-2xl border border-gray-700 transition-all" id="q-box-${idx}">
+                        <h3 class="font-bold mb-4 text-lg text-gray-100">${idx + 1}. ${q.question}</h3>
+                        <div class="grid gap-3">
+                            ${q.options.map((opt, oIdx) => `
+                                <button onclick="checkAns(${idx}, ${oIdx})" id="btn-${idx}-${oIdx}" class="text-left p-4 rounded-xl border border-gray-600 bg-gray-700/50 hover:bg-gray-700 hover:border-brand-light transition-colors text-sm text-gray-200">
+                                    ${opt}
+                                </button>
+                            `).join('')}
+                        </div>
+                        <div id="feed-${idx}" class="mt-4 text-sm hidden p-4 rounded-xl leading-relaxed"></div>
+                    </div>
+                `;
+                container.insertAdjacentHTML('beforeend', html);
+            });
+            lucide.createIcons();
+        }
+
+        function checkAns(qIdx, oIdx) {
+            const q = quizData[qIdx];
+            const isCorrect = oIdx === q.correctIndex;
+            const feed = document.getElementById(`feed-${qIdx}`);
+            const box = document.getElementById(`q-box-${qIdx}`);
+
+            // Desabilita os botões após a resposta
+            q.options.forEach((_, i) => {
+                const btn = document.getElementById(`btn-${qIdx}-${i}`);
+                btn.disabled = true;
+                btn.classList.remove('hover:bg-gray-700', 'hover:border-brand-light');
+                
+                if (i === q.correctIndex) {
+                    btn.classList.add('bg-eco-dark/30', 'border-eco', 'text-eco-light');
+                    btn.classList.remove('bg-gray-700/50', 'border-gray-600', 'text-gray-200');
+                } else if (i === oIdx && !isCorrect) {
+                    btn.classList.add('bg-red-900/40', 'border-red-500', 'text-red-200');
+                    btn.classList.remove('bg-gray-700/50', 'border-gray-600', 'text-gray-200');
+                } else {
+                    btn.classList.add('opacity-40');
+                }
+            });
+
+            // Mostra o feedback detalhado
+            feed.classList.remove('hidden');
+            if (isCorrect) {
+                feed.innerHTML = `<div class="flex gap-3"><i data-lucide="check-circle-2" class="w-6 h-6 flex-shrink-0 text-eco-light"></i> <div>${q.feedbackSuccess}</div></div>`;
+                feed.classList.add('bg-eco-dark/20', 'border', 'border-eco/50', 'text-eco-light');
+                box.classList.add('border-eco/50');
+                confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+            } else {
+                feed.innerHTML = `<div class="flex gap-3"><i data-lucide="alert-circle" class="w-6 h-6 flex-shrink-0 text-red-300"></i> <div>${q.feedbackError}</div></div>`;
+                feed.classList.add('bg-red-900/30', 'border', 'border-red-500/50', 'text-red-200');
+                box.classList.add('border-red-500/50', 'shake-element');
+            }
+
+            lucide.createIcons();
+            
+            // Controle para reiniciar o quiz
+            questionsAnswered++;
+            if (questionsAnswered === quizData.length) {
+                document.getElementById('quiz-controls').classList.remove('hidden');
+            }
+        }
+
+        // --- Funções do Modal de Imagem (Zoom) ---
+        const imageModal = document.getElementById('image-modal');
+        const modalImage = document.getElementById('modal-image');
+
+        function openModal(imageSrc) {
+            modalImage.src = imageSrc; // Define o caminho da imagem clicada para a imagem do modal
+            imageModal.classList.remove('hidden'); // Remove o display: none para a div existir na tela
+            
+            // Pequeno atraso para o navegador processar a remoção do hidden antes de fazer a animação CSS
+            setTimeout(() => {
+                imageModal.classList.remove('opacity-0');
+                modalImage.classList.remove('scale-95');
+                modalImage.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            // Inicia as animações reversas (esmaecer e diminuir)
+            imageModal.classList.add('opacity-0');
+            modalImage.classList.remove('scale-100');
+            modalImage.classList.add('scale-95');
+            
+            // Espera a duração da animação no CSS (300ms) para então esconder a div
+            setTimeout(() => {
+                imageModal.classList.add('hidden');
+                modalImage.src = ''; // Limpa a fonte da imagem
+            }, 300);
+        }
+
+        window.onload = function() {
+            // Inicializa ícones
+            lucide.createIcons();
+            
+            // Inicializa animações AOS
+            if (typeof AOS !== 'undefined') {
+                AOS.init({ duration: 800, once: true });
+            }
+            
+            // Inicializa as perguntas do Quiz
+            renderQuiz();
+
+            // Lógica do Menu Mobile
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            btn.onclick = () => menu.classList.toggle('hidden');
+            
+            // Fecha menu mobile ao clicar em um link
+            menu.querySelectorAll('a').forEach(link => {
+                link.onclick = () => menu.classList.add('hidden');
+            });
+        };
+    </script>
+</body>
+</html>
