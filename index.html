@@ -7,13 +7,13 @@
     <link rel="shortcut icon" href="luminaria.ico" type="image/x-icon">
 
     
-    <!-- Tailwind CSS -->
+    
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts -->
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- AOS Animation CSS -->
+    
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <script>
@@ -60,7 +60,7 @@
             50% { transform: translateX(8px); }
             75% { transform: translateX(-8px); }
         }
-        /* Previne scroll horizontal globalmente */
+        /* bloqueia scroll horizontal globalmente */
         html, body {
             overflow-x: hidden;
             width: 100%;
@@ -135,7 +135,7 @@
         </div>
     </section>
 
-    <!-- Por que usar o ar&#8209;condicionado de forma consciente? -->
+    <!-- Por que usar o ar-condicionado de forma consciente? -->
     <section class="py-16 bg-gray-50 border-t border-gray-100 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-12" data-aos="fade-down">
@@ -223,7 +223,7 @@
 
             <!-- Transformando isso em cultura -->
             <div class="bg-gradient-to-r from-brand-dark to-brand rounded-3xl p-8 md:p-12 text-white shadow-xl relative overflow-hidden" data-aos="zoom-in">
-                <!-- Decorative BG elements -->
+                
                 <div class="absolute -top-20 -right-20 w-64 h-64 bg-white opacity-10 rounded-full mix-blend-overlay filter blur-xl"></div>
                 <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-white opacity-10 rounded-full mix-blend-overlay filter blur-xl"></div>
                 
@@ -341,7 +341,7 @@
                 <p class="text-gray-600 max-w-2xl mx-auto">A eficiência energética começa nos nossos lares. Adote estas práticas valiosas no seu dia a dia.</p>
             </div>
 
-            <!-- Grid com Mais Dicas de Casa -->
+            
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
                 <!-- Dica 1 -->
                 <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:border-eco transition-colors" data-aos="fade-up" data-aos-delay="100">
@@ -409,7 +409,7 @@
                         <div class="h-56 mb-6 flex items-center justify-center bg-white w-full rounded-xl p-2 border border-gray-200 shadow-sm">
                             <img src="conpet.png" alt="" class="h-full object-contain cursor-zoom-in hover:scale-110 transition-transform duration-300" onclick="openModal(this.src)">
                         </div>
-                        <h4 class="font-bold text-lg text-orange-600 mb-3">Selo CONPET de Eficiência</h4>
+                        <h4 class="font-bold text-lg text-eco-dark mb-3">Selo CONPET de Eficiência</h4>
                         <p class="text-sm text-gray-600">Segue exatamente a mesma lógica rigorosa do selo Procel, porém é destinado à avaliação e eficiência de aparelhos movidos a <strong>derivados de petróleo e gás natural</strong>. Procure por este selo ao comprar fogões, fornos a gás e aquecedores de água residenciais.</p>
                     </div>
                 </div>
@@ -454,7 +454,7 @@
                 </p>
             </div>
             
-            <!-- Frase final de impacto -->
+            
             <blockquote class="text-2xl font-bold text-brand italic border-y-2 border-brand-light py-8 my-8 relative">
                 "O futuro sustentável não é construído com grandes sacrifícios esporádicos, mas sim com pequenos hábitos diários que todos nós podemos praticar hoje!"
             </blockquote>
@@ -477,7 +477,7 @@
             <div class="flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
                 
                 <div class="flex items-center gap-4 flex-col md:flex-row">
-                    <!-- Espaço para Logo Axioma no Rodapé -->
+                    
                     <div class="w-12 h-12 bg-gray-300 rounded-lg flex items-center justify-center font-bold text-gray-500 shadow-inner" title="">
                         <img src="axioma.jpg" alt="">
                     </div>
@@ -500,7 +500,7 @@
         </div>
     </footer>
 
-    <!-- Scripts Externos -->
+    
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
@@ -608,7 +608,7 @@
             const feed = document.getElementById(`feed-${qIdx}`);
             const box = document.getElementById(`q-box-${qIdx}`);
 
-            // Desabilita os botões após a resposta
+            // Desabilita botões após resposta
             q.options.forEach((_, i) => {
                 const btn = document.getElementById(`btn-${qIdx}-${i}`);
                 btn.disabled = true;
@@ -625,7 +625,7 @@
                 }
             });
 
-            // Mostra o feedback detalhado
+            // Mostra feedback detalhado
             feed.classList.remove('hidden');
             if (isCorrect) {
                 feed.innerHTML = `<div class="flex gap-3"><i data-lucide="check-circle-2" class="w-6 h-6 flex-shrink-0 text-eco-light"></i> <div>${q.feedbackSuccess}</div></div>`;
@@ -640,7 +640,7 @@
 
             lucide.createIcons();
             
-            // Controle para reiniciar o quiz
+            // reiniciar o quiz
             questionsAnswered++;
             if (questionsAnswered === quizData.length) {
                 document.getElementById('quiz-controls').classList.remove('hidden');
@@ -652,10 +652,10 @@
         const modalImage = document.getElementById('modal-image');
 
         function openModal(imageSrc) {
-            modalImage.src = imageSrc; // Define o caminho da imagem clicada para a imagem do modal
-            imageModal.classList.remove('hidden'); // Remove o display: none para a div existir na tela
+            modalImage.src = imageSrc; 
+            imageModal.classList.remove('hidden'); 
             
-            // Pequeno atraso para o navegador processar a remoção do hidden antes de fazer a animação CSS
+          
             setTimeout(() => {
                 imageModal.classList.remove('opacity-0');
                 modalImage.classList.remove('scale-95');
@@ -664,20 +664,18 @@
         }
 
         function closeModal() {
-            // Inicia as animações reversas (esmaecer e diminuir)
             imageModal.classList.add('opacity-0');
             modalImage.classList.remove('scale-100');
             modalImage.classList.add('scale-95');
             
-            // Espera a duração da animação no CSS (300ms) para então esconder a div
+            
             setTimeout(() => {
                 imageModal.classList.add('hidden');
-                modalImage.src = ''; // Limpa a fonte da imagem
+                modalImage.src = '';
             }, 300);
         }
 
         window.onload = function() {
-            // Inicializa ícones
             lucide.createIcons();
             
             // Inicializa animações AOS
@@ -685,15 +683,12 @@
                 AOS.init({ duration: 800, once: true });
             }
             
-            // Inicializa as perguntas do Quiz
             renderQuiz();
 
-            // Lógica do Menu Mobile
             const btn = document.getElementById('mobile-menu-btn');
             const menu = document.getElementById('mobile-menu');
             btn.onclick = () => menu.classList.toggle('hidden');
             
-            // Fecha menu mobile ao clicar em um link
             menu.querySelectorAll('a').forEach(link => {
                 link.onclick = () => menu.classList.add('hidden');
             });
